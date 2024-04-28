@@ -5,6 +5,7 @@
 from dotenv import load_dotenv
 import logging, verboselogs
 from time import sleep
+import datetime
 
 from deepgram import (
     DeepgramClient,
@@ -20,6 +21,12 @@ load_dotenv()
 is_finals = []
 
 def main():
+
+    now = datetime.datetime.now()
+    timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
+    file_name = f"AviJournal_Deepgram_{timestamp}.txt"
+    transcript_file = open(file_name, "w")  # Open a file in write mode with the generated file name
+
     try:
         # example of setting up a client config. logging values: WARNING, VERBOSE, DEBUG, SPAM
         # config = DeepgramClientOptions(
@@ -49,6 +56,8 @@ def main():
                 if result.speech_final:
                     utterance = ' '.join(is_finals)
                     print(f"Speech Final: {utterance}")
+                    transcript_file.write(utterance + "\n")  # Write final text to file
+                    transcript_file.flush()  # Explicitly flush to file after writing
                     is_finals = []
                 else:
                     # These are useful if you need real time captioning and update what the Interim Results produced
@@ -72,6 +81,7 @@ def main():
 
         def on_close(self, close, **kwargs):
             print(f"Deepgram Connection Closed")
+            transcript_file.close()  # Ensure the file is closed when the connection ends
 
         def on_error(self, error, **kwargs):
             print(f"Deepgram Handled Error: {error}")
@@ -136,6 +146,7 @@ def main():
 
     except Exception as e:
         print(f"Could not open socket: {e}")
+        transcript_file.close()  # Ensure the file is closed even on error
         return
 
 
