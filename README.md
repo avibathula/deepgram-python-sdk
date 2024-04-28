@@ -1,4 +1,4 @@
-# See [avi-notes.md](avi-notes.md)
+# See [avi-notes.md](avi-notes/avi-notes.md)
 
 =============================
 

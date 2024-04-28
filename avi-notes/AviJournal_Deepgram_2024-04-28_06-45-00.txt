@@ -1,0 +1,108 @@
+Okay.
+Looks like
+gateway, reports. 1 is is in Deepgram devs, called live transcription, fast API. It is 2 years back.
+There was some problem, I think, with one of the
+the packages, and it was just failing. So think it's it's just a it's been it's a very old one, and it's not working. And also it's not official,
+hyphen SDK.
+It's under the account GitHub account of Deepgram.
+And, there are,
+implementation of microphone, operations.
+different, scenarios of, let's assume, you want to manage, your API keys. There is a managed folder for that one. There is a live
+client dot pie, which,
+I'm not sure exactly how this is dealing with. But
+this has all the code, and this the code and this is kept relatively up up to date.
+And, one of the things that the,
+version is not, varying a lot.
+pulling so that we can have the up to date
+examples. Okay. Now
+what would I want to try? Should I try, oh, perfect. Actually, in the read me
+dotmd file in the examples, there are essentially kind of points to 2, 2 things.
+The microphone one has
+library that has
+real live real real time, in this is in readme.md.
+But the HTTP client
+recording the
+It's not recording the audio directly. Instead, it's actually
+taking the
+stream
+from
+BBC Media.
+everything that is needs to be done
+Okay. So
+the distinction between should I use, should we use the
+CLI version of,
+the example or the fast API version of the example. It seems like the the reason why
+I I think, you know, it makes sense. I think webs the fast API version might be a good one for me to adapt. And work on, rather than a native client one. Mainly because
+customer usages, like,
+how they are it's now
+one good thing is
+browser basically abstracts all of this stuff. And because all the web apps need to work, there is a consistency that the browser needs to provide. And because of that,
+we
+there.
+a a client application,
+At the end of the day, I believe for things to be working on the web, web based solution as well as mobile solution as well as desktop solution, The best
+path is actually is, coming full circle at this point. Is to use
+a desktop based client. Now
+While the desktop client can have anything there, it essentially needs to talk to some server who files does the functionality there So the fast API
+Please actually which talks to
+Deepgram server.
+And
+gives a web based user experience
+for the user to actually do something.
+I wonder, like, you know what? I'm not sure. I need to really see how
+in the on the web server side, then it's not that good because, basically, at that point, it is actually
+it's actually recording the audio from the on the server side.
+I guess we can
+package the fast API on the local one itself. And maybe that's how we write
+the 129, 107.0010 or local host kind of version this one to be shown on a particular
+So
+it has to be done. Maybe a JavaScript version of it if there is one. I think that might
+be a good, solution for this one. I don't know. I'm thinking here.
+a good
+Oh, this is gonna sync HTTP.
+Let's see this one. How is this done?
+This is also doing lit. BBC audio. So it doesn't.
+I wonder if we can actually if this there is an is something here.
+microphone
+and we can actually abstract that into a separate
+module. Here it is b b b c, this one. Right? Let's assume
+we do a very simple
+catch hold of microphone.
+Get
+16
+In the case of Deepgram Python SDK, there's a Deepgram client side,
+audio microphone,
+The class here
+Yeah. This class
+at least gives me the chunk sizes number of channels, and other thing, other information.
+Just need to figure out a way to
+If I can actually have that separate module be able to
+be able to capture the audio
+Oh, fuck. They have a text to speech also.
+customer seems to be
+a TTS system.
+And they have a selected amount number of voices are there, voice selections. But,
+yeah, we need to figure it out.
+I guess that's what they are talking about here. In the examples list.
+There are management APIs There's live audio transcription.
+There's prerecorded audio. And analyze text.
+And this is extremely debuggable as well. This beautiful code.
+I can actually I can see how to
+There are tests also written.
+I'm thinking I think to summarize or, like, to overall is that
+solution
+but
+Time to see if maybe or I can or or even
+a non fast API based just the client side one that is being looked at.
+Yeah. I don't know. I have to see.
+with microphone and captures the audio as a stream. And once the stream is there,
+it's as good as the BBC stream.
+BBC stream might be an MP 3 stream. That's okay. That's a different story. But who cares? Like, you know what? I might
+be able to dump it as it is into the wonder if, we can actually
+I think it all depends on how strong the processor is because
+instead of, like, a big audio, if I can use an
+m p three, audio stream. That way the amount of data that I'm having to send
+to
+Deepgram service is going to reduce And, effectively, the quota that they have as to, like, you know, this is the amount of data that you can send us for transcription
+On the pricing side.
+On the pricing website, we just need to double check.
